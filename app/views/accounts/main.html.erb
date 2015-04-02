@@ -1,0 +1,51 @@
+<div class="page-header">
+  <h1><%=t '.title', :default => "Bank Accounting System" %></h1>
+</div>
+
+<% if @message.present? %>
+   <div id="expl" class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @message %></h3>
+      </div>
+    </div>
+  <% end %>
+
+<h3>Transfer Money</h1>
+<%= form_tag(:transfer, method: :post) do %>
+  <div class="control-group">
+    <%= label_tag :source_id, "Source account ID:" %>
+    <div class="controls">
+      <%= number_field_tag(:source_id, in: 1..1000, step: 1) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag :destination_id, "Destination account ID:" %>
+    <div class="controls">
+      <%= number_field_tag(:destination_id, in: 1..1000, step: 1) %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= label_tag :amount, "Amount:" %>
+    <div class="controls">
+      <%= number_field_tag(:amount, nil, min: 0.001, step: 0.001) %>
+    </div>
+  </div>
+
+  <%= submit_tag "Transfer", :class => 'btn btn-primary' %>
+<% end %>
+<br/>
+
+<h3>Get Balance</h1>
+<%= form_tag(:balance, method: :get) do %>
+  <div class="control-group">
+    <%= label_tag :id, "Account ID:" %>
+    <div class="controls">
+      <%= number_field_tag(:id, in: 1..1000, step: 1) %>
+    </div>
+  </div>
+
+  <%= submit_tag "Get Balance", :class => 'btn btn-primary' %>
+<% end %>
+<br/>

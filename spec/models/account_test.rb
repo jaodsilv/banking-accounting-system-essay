@@ -19,7 +19,7 @@ RSpec.describe Account, type: :model do
 
     it "raises error if not sufficient balance" do
       account = FactoryGirl.build(:account_one)
-      expect { account.debit 25.0 }.to raise_error(Exception, "Not enought balance")
+      expect { account.debit 25.0 }.to raise_error(Exception, "Source account doesn't have enought credit.")
     end
   end
 

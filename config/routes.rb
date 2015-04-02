@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root 'accounts#main'
+  resources :accounts, only: [:index, :new, :create]
+  post 'transfer' => 'accounts#transfer'
+  get 'balance' => 'accounts#balance'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
